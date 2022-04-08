@@ -20,6 +20,15 @@
         </p>
       </header>
       <form id="survey-form" action="https://formsubmit.co/vince.gallardo@cvsu.edu.ph" method="POST">
+
+        <!-- Honeypot -->
+
+        <input type="text" name="_honey" style="display:none"> 
+
+        <!-- Display Captcha -->
+
+        <input type="text" name="_captcha" value="false">
+
         <div class="form-group">
           <label id="name-label" for="name">Name</label>
           <input
@@ -99,6 +108,24 @@
       </form>
     </div>
 
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        <function sendEmail(){
+          Email.send({
+              Host : "smtp.gmail.com",
+              Username : "vincegallardo82@gmail.com",
+              Password : "",
+              To : 'vincegallardo82@gmail.com',
+              From : document.getElementById("email").value,
+              Subject : "New contact form Inquiry",
+              Body : "Name: " + document.getElementById("name").value
+                    + "<br> Message:" + document.getElementById("comments").value
+                    + "<br> Email:" + document.getElementById("email").value
 
+              }).then(
+            message => alert("Message Sent Successfully")
+          );
+        }
+    </script>
     </body>
   </html>
